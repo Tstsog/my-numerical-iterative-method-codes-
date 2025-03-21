@@ -1,4 +1,4 @@
-% This Matlab code solves one-variable non-linear equation f(x) = 0 using Newton-Raphson iterative method [1].
+% This Matlab code solves two-variable non-linear equation f(x) = 0 using Newton-Raphson iterative method [1].
 %
 % Ref. [1] S. Chapra, "Applied numerical methods with MATLAB", Mc Craw Hill, Singapore (2008).
 %
