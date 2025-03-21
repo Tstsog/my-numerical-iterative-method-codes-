@@ -3,7 +3,7 @@
 % Ref. [1] S. Chapra, "Applied numerical methods with MATLAB", Mc Craw Hill, Singapore (2008).
 %
 % The non-linear equation: f(x) = 2*sin(x) - x^2 = 0.  
-% The Newton-Raphson iterative scheme: x^(k+1) = x^(k) - Jacobian^(-1)*f(x), where Jacobian, J(x) = df/dx, 
+% The Newton-Raphson iterative scheme: x^(k+1) = x^(k) - [Jacobian(x^(k)]^(-1)*f(x^(k)), where Jacobian, J(x) = df/dx, 
 % and 'k' defines the k-th iteration.
 %
 % The first order derivative is taken with finite difference scheme.  
@@ -27,13 +27,12 @@ for it = 1:iter_max
     %
     [it, x, f]
     % central difference scheme
-    df = (functon_one_varaible(x+dx) - functon_one_varaible(x-dx))/(2*dx);    
+    Jacobian = (functon_one_varaible(x+dx) - functon_one_varaible(x-dx))/(2*dx);    
     %
     % forward difference 
-%    df = (functon_one_varaible(x+dx) - functon_one_varaible(x))/dx;    
+%    Jacobian = (functon_one_varaible(x+dx) - functon_one_varaible(x))/dx;    
     %
-    Jacobian = f/df;
-    x = x - Jacobian;
+    x = x - Jacobian\f; % x^(k+1) = x^(k) - [J(x^(k))]^(-1) * f(x^(k))
     %
     if (abs(f) <= tol)
         break; 
